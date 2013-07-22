@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<project name="4cc" default="main" basedir=".">
+  <property name="src.dir" location="src" />
+  <property name="build.dir" location="build" />
+  <property name="dist.dir" location="dist" />
+  <property name="docs.dir" location="docs" />
+  <property name="lib.storage.windows" location="D:\builds\java\4cc" />
+  <property name="lib.storage.linux" location="~/Builds/auto/4cc" />
+
+  <condition property="isWindows">
+    <os family="windows" />
+  </condition>
+
+  <condition property="isLinux">
+    <os family="unix" />
+  </condition>
+
+  <!-- Deletes the existing build, docs and dist directory-->
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${docs.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+
+  <!-- Creates the  build, docs and dist directory-->
+  <target name="makedir">
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${docs.dir}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+
+  <!-- Compiles the java code (including the usage of library for JUnit -->
+  <target name="compile" depends="clean, makedir">
+    <javac srcdir="${src.dir}" destdir="${build.dir}">
+    </javac>
+  </target>
+
+  
+  
+  
+  
+  <!-- Creates Javadoc -->
+  <target name="docs.windows" depends="compile" if="isWindows">
+    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <!-- Define which files / directory should get included, we include all -->
+       <fileset dir="${src.dir}">
+                <include name="**" />
+           </fileset>
+    </javadoc>
+    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${lib.storage.windows}\docs">
+      <!-- Define which files / directory should get included, we include all -->
+       <fileset dir="${src.dir}">
+                <include name="**" />
+           </fileset>
+    </javadoc>
+  </target>
+
+  <target name="docs.linux" depends="compile" if="isLinux">
+    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${docs.dir}">
+      <!-- Define which files / directory should get included, we include all -->
+       <fileset dir="${src.dir}">
+                <include name="**" />
+           </fileset>
+    </javadoc>
+    <javadoc packagenames="src" sourcepath="${src.dir}" destdir="${lib.storage.linux}\docs">
+      <!-- Define which files / directory should get included, we include all -->
+       <fileset dir="${src.dir}">
+                <include name="**" />
+           </fileset>
+    </javadoc>
+  </target>
+
+
+
+
+
+  <!--Creates the deployable jar file  -->
+  <target name="jar.windows" depends="compile" if="isWindows">
+    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}"></jar>
+    <jar destfile="${lib.storage.windows}\4cc-1.0.0.ant.jar" basedir="${build.dir}"></jar>
+  </target>
+
+  <target name="jar.linux" depends="compile" if="isLinux">
+    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}"></jar>
+    <jar destfile="${lib.storage.linux}\4cc-1.0.0.ant.jar" basedir="${build.dir}"></jar>
+  </target>
+
+
+
+  <target name="main" depends="compile, jar.linux, jar.windows, docs.linux, docs.windows">
+    <description>Main target</description>
+  </target>
+
+</project> 
