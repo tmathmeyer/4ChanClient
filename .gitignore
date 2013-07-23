@@ -10,6 +10,7 @@ tmp/
 build/
 dist/
 docs/
+~/
 *.tmp
 *.bak
 *.swp
