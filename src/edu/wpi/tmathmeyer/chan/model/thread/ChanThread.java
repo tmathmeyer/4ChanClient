@@ -5,29 +5,47 @@ import java.util.List;
 import edu.wpi.tmathmeyer.chan.model.comment.ChanComment;
 import edu.wpi.tmathmeyer.chan.model.image.ChanImage;
 
-public class ChanThread {
+public interface ChanThread {
 	
-	private List<ChanComment> comments;
-	private boolean stickied;
-	private boolean closed;
+	/**
+	 * 
+	 * @return the ID of this thread
+	 */
+	public int getThreadID();
 	
-	public ChanImage getTitleImage() {
-		return this.getTitleComment().getImage();
-	}
+	/**
+	 * 
+	 * @return whether the thread is archived on the user's computer
+	 */
+	public boolean isArchived();
 	
-	public ChanComment getTitleComment() {
-		return comments.get(0);
-	}
+	/**
+	 * 
+	 * @return the title image of this comment
+	 */
+	public ChanImage getTitleImage();
 	
-	public boolean isStickied(){
-		return this.stickied;
-	}
+	/**
+	 * 
+	 * @return the title comment of this image
+	 */
+	public ChanComment getTitleComment();
 	
-	public boolean isClosed() {
-		return this.closed;
-	}
+	/**
+	 * 
+	 * @return whether the thread is (or was) stickied on the board from which it is being hosted
+	 */
+	public boolean isStickied();
 	
-	public List<ChanComment> getAllComments() {
-		return comments;
-	}
+	/**
+	 * 
+	 * @return whether the thread was closed for posting before it 404'd
+	 */
+	public boolean isClosed();
+	
+	/**
+	 * 
+	 * @return all of the comments on this thread
+	 */
+	public List<ChanComment> getAllComments();
 }
