@@ -3,8 +3,9 @@ package edu.wpi.tmathmeyer.chan.model.comment;
 import java.util.List;
 
 import edu.wpi.tmathmeyer.chan.model.image.ChanImage;
+import edu.wpi.tmathmeyer.chan.model.meta.MetaHolder;
 
-public interface ChanComment {
+public interface ChanComment extends MetaHolder{
     
     /**
      * 
