@@ -15,34 +15,34 @@ public class SaveBuilder {
      * @return The Save built form the SaveBuilder's options.
      */
     public Save build(){
-	return new Save(title,description,meta,content);
+    return new Save(title,description,meta,content);
     }
     
     /**
      * @param The title of the Save.
      */
     public void setTitle(String title){
-	this.title = title;
+    this.title = title;
     }
 
     /**
      * @param The desctiption of the Save.
      */
     public void setDescription(String description){
-	this.description = description;
+    this.description = description;
     }
     
     /**
      * @param A String to add to the metadata of the Save.
      */
     public void addMeta(String data){
-	this.meta.add(data);
+    this.meta.add(data);
     }
 
     /**
      * @param The JsonValue of the Save.
      */
     public void setContent(JsonValue Content){
-	this.content = content;
+    this.content = content;
     }
 }

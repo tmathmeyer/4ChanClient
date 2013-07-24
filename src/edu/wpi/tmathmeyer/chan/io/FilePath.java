@@ -4,9 +4,9 @@ public static FilePath{
     String path;
     
     private FilePath(){
-	path = "~/chanapp/";
+    path = "~/chanapp/";
     }
 
-    public FilePath getInstance(){	
-	return (path = null) ? new FilePath() : this;
+    public FilePath getInstance(){    
+    return (path = null) ? new FilePath() : this;
     }
