@@ -1,3 +1,7 @@
+/*******************************************************************************
+ * author: Ted Meyer
+ * since: july, 2013
+ *******************************************************************************/
 package edu.wpi.tmathmeyer.chan.remote.network;
 
 import java.io.BufferedInputStream;

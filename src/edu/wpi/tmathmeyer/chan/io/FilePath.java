@@ -1,9 +1,13 @@
+/*******************************************************************************
+ * author: Ted Meyer
+ * since: july, 2013
+ *******************************************************************************/
 package edu.wpi.tmathmeyer.chan.io;
 
 public class FilePath{
-	public enum OS_TYPE{
-		WINDOWS, UNIX;
-	}
+    public enum OS_TYPE{
+        WINDOWS, UNIX;
+    }
     private String win_path = "%AppData%4cc/";
     private String unx_path = "~/.4cc/";
     
@@ -24,21 +28,21 @@ public class FilePath{
      * @return a new instance of the filePath class. 
      */
     public static FilePath getInstance(){  
-    	if (instance == null) {
-    		instance = new FilePath();
-    	}
-    	return instance;
+        if (instance == null) {
+            instance = new FilePath();
+        }
+        return instance;
     }
     
     public String getPath(OS_TYPE type) {
-    	if (type == OS_TYPE.WINDOWS) {
-    		return this.win_path;
-    	}
-    	else if (type == OS_TYPE.UNIX) {
-    		return this.unx_path;
-    	}
-    	else {
-    		throw new RuntimeException(); //something has gone terribly, terribly wrong
-    	}
+        if (type == OS_TYPE.WINDOWS) {
+            return this.win_path;
+        }
+        else if (type == OS_TYPE.UNIX) {
+            return this.unx_path;
+        }
+        else {
+            throw new RuntimeException(); //something has gone terribly, terribly wrong
+        }
     }
 }
