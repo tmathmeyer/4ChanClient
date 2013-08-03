@@ -76,13 +76,29 @@
 
   <!--Creates the deployable jar file  -->
   <target name="jar.windows" depends="compile" if="isWindows">
-    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}"></jar>
-    <jar destfile="${lib.storage.windows}\4cc-1.0.0.ant.jar" basedir="${build.dir}"></jar>
+    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="eedu.wpi.tmathmeyer.chan.gui.window.ModernWindow"/>
+      </manifest>
+    </jar>
+    <jar destfile="${lib.storage.windows}\4cc-1.0.0.ant.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="eedu.wpi.tmathmeyer.chan.gui.window.ModernWindow"/>
+      </manifest>
+    </jar>
   </target>
 
   <target name="jar.linux" depends="compile" if="isLinux">
-    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}"></jar>
-    <jar destfile="${lib.storage.linux}\4cc-1.0.0.ant.jar" basedir="${build.dir}"></jar>
+    <jar destfile="${dist.dir}\4cc.ant.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="eedu.wpi.tmathmeyer.chan.gui.window.ModernWindow"/>
+      </manifest>
+    </jar>
+    <jar destfile="${lib.storage.linux}\4cc-1.0.0.ant.jar" basedir="${build.dir}">
+      <manifest>
+        <attribute name="Main-Class" value="eedu.wpi.tmathmeyer.chan.gui.window.ModernWindow"/>
+      </manifest>
+    </jar>
   </target>
 
 
